@@ -11,7 +11,7 @@ document.getElementById("search-button").addEventListener("click", () => {
             method: 'GET'
         };
 
-        fetch(`http://api.weatherapi.com/v1/current.json?key=5d7a25b2cad54f73bb0112953240203&q=${d}`, reop)
+        fetch(`https://api.weatherapi.com/v1/current.json?key=5d7a25b2cad54f73bb0112953240203&q=${d}`, reop)
             .then(response => response.json())
             .then(data => {
                 alert("Discover Your  Weather Information in " + data.location.name);
@@ -53,7 +53,7 @@ function fetchFutureForecast(location) {
     for (let i = 0; i < 7; i++) {
         const formattedDate = currentDay.toISOString().split('T')[0];
 
-        fetch(`http://api.weatherapi.com/v1/forecast.json?key=5d7a25b2cad54f73bb0112953240203&q=${location}&days=7&dt=${formattedDate}&aqi=yes&alerts=yes`)
+        fetch(`https://api.weatherapi.com/v1/forecast.json?key=5d7a25b2cad54f73bb0112953240203&q=${location}&days=7&dt=${formattedDate}&aqi=yes&alerts=yes`)
             .then(response => response.json())
             .then(data => {
                 document.getElementById(`date${i + 1}`).innerHTML = data.forecast.forecastday[0].date;
@@ -74,7 +74,7 @@ function fetchPastForecast(location) {
     for (let i = 5; i > 0; i--) {
         const formattedDate = currentDays.toISOString().split('T')[0];
 
-        fetch(`http://api.weatherapi.com/v1/history.json?key=5d7a25b2cad54f73bb0112953240203&q=${location}&days=7&dt=${formattedDate}&aqi=yes&alerts=yes`)
+        fetch(`https://api.weatherapi.com/v1/history.json?key=5d7a25b2cad54f73bb0112953240203&q=${location}&days=7&dt=${formattedDate}&aqi=yes&alerts=yes`)
             .then(response => response.json())
             .then(data => {
                 document.getElementById(`d${i - 1}`).innerHTML = data.forecast.forecastday[0].date;
